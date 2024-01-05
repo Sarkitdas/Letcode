@@ -1,0 +1,34 @@
+//4. Median of Two Sorted Arrays
+
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> New_array(nums1.size() + nums2.size());
+        int k, i;
+        int Size = New_array.size();
+        for (i = 0; i < nums1.size(); i++) {
+            New_array[i] = nums1[i];
+        }
+        k = i;
+        for (i = 0; i < nums2.size(); i++) {
+            New_array[k] = nums2[i];
+            k++;
+        }
+        sort(New_array.begin(), New_array.end());
+        double result;
+        int middle;
+        if (Size % 2 == 0) {
+            middle = Size / 2-1;
+            result=(New_array[middle] + New_array[middle + 1]) / 2.0;
+        }
+        else if(Size==1)
+        {
+            return middle=New_array[0];
+        }
+        else {
+            middle = Size / 2 ;
+            result=New_array[middle];
+        }
+    return result;
+    }
+};
